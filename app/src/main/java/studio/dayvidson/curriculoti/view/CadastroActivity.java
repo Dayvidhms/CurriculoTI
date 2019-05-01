@@ -1,6 +1,11 @@
 package studio.dayvidson.curriculoti.view;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -8,6 +13,10 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 import studio.dayvidson.curriculoti.R;
 import studio.dayvidson.curriculoti.controller.Usuario;
@@ -50,18 +59,18 @@ public class CadastroActivity extends AppCompatActivity {
                 String whatspp = edtWhatsApp.getText().toString();
                 String user = edtUsuario.getText().toString();
 
-                if(nome.isEmpty()||senha.isEmpty()||whatspp.isEmpty()||user.isEmpty()){
-                    btnConfirmar.setEnabled(true);
+                if(nome.isEmpty()||senha.length()<8||whatspp.length()<11||user.length()<3){
+                    btnConfirmar.setEnabled(false);
                 }else{
                     btnConfirmar.setEnabled(true);
                 }
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
             }
+
         };
 
         edtSenha.addTextChangedListener(verificaTextos);
@@ -99,5 +108,7 @@ public class CadastroActivity extends AppCompatActivity {
 
             return result;
         }
+
+
     }
 }

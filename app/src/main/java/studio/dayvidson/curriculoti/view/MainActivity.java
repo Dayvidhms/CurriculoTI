@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btnEntrar.setEnabled(false);
+
         btnEntrar = findViewById(R.id.btnLoginEntrar);
         btnCadastrar = findViewById(R.id.btnLoginCadastrar);
 
